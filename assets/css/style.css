@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+}
+
+h1, h3, h4, p{
+    text-align: center;
+    color: white;
+}
+
+.row{
+    justify-content: center;
+}
