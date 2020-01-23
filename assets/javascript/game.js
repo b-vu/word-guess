@@ -1,17 +1,22 @@
 var words = ["AMERICA", "BULGARIA", "SPAIN", "MEXICO", "CANADA", "VIETNAM", "AUSTRALIA", "VENEZUELA", "TAIWAN", "GERMANY", "THAILAND", "MADAGASCAR", "SINGAPORE"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var generateButton = document.querySelector("#generateButton");
-var inputField = document.querySelector("#input");
 var letterGuess = document.querySelector("#letterGuess");
 var generatedWord = document.querySelector("#word");
 
 generateButton.addEventListener("click", function(){
     wordAnswer = words[Math.floor(Math.random() * words.length)];
+    document.querySelector("#inputForm").textContent = "";
     wordBlank = "";
     lettersGuessed= "";
     lettersGuessedCorrectly = [];
     counter = 0;
     guessesRemaining = 10;
+    var input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "Guess a letter");
+    input.setAttribute("id", "input");
+    document.querySelector("#inputForm").appendChild(input);
     document.querySelector("#winDisplay").textContent = "Letters guessed incorrectly:";
     document.querySelector("#guesses").textContent = "Guesses remaining: " + guessesRemaining;
 
@@ -26,7 +31,7 @@ generateButton.addEventListener("click", function(){
 
 inputForm.addEventListener("submit", function(event){
     event.preventDefault();
-    userGuess = inputField.value.toUpperCase();
+    userGuess = document.querySelector("#input").value.toUpperCase();
 
     if(userGuess.length === 1 && guessesRemaining > 0 && counter !== wordAnswer.length && letters.indexOf(userGuess) !== -1 && lettersGuessedCorrectly.indexOf(userGuess) === -1){
         for(i = 0; i < wordAnswer.length; i++){
@@ -48,11 +53,11 @@ inputForm.addEventListener("submit", function(event){
             }
         }
     }
-    else if( lettersGuessedCorrectly.indexOf(userGuess) !== -1){
-        alert("You already guessed " + userGuess + ".");
-    }
     else if(counter === wordAnswer.length || guessesRemaining === 0){
         alert("Press 'Generate Word' to play again.");
+    }
+    else if( lettersGuessedCorrectly.indexOf(userGuess) !== -1){
+        alert("You already guessed " + userGuess + ".");
     }
     else{
         alert("Please guess 1 letter.");
