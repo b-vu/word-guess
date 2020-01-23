@@ -32,7 +32,6 @@ inputForm.addEventListener("submit", function(event){
         for(i = 0; i < wordAnswer.length; i++){
             if(userGuess === wordArray[i]){
                 lettersGuessedCorrectly.push(userGuess);
-                console.log(lettersGuessedCorrectly);
                 wordBlankArray[(i * 2)] = userGuess;
                 wordBlank = "";
                 for(j = 0; j < wordBlankArray.length; j++){
