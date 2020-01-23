@@ -2,11 +2,27 @@ body{
     background-color: black;
 }
 
-h1, h3, h4, p{
+h1, h2, h3, h4, p{
     text-align: center;
-    color: white;
+    color: rgb(231, 220, 207);
 }
 
 .row{
     justify-content: center;
+}
+
+.btn{
+    color: rgb(231, 220, 207);
+}
+
+.btn-primary{
+    border: none;
+}
+
+.btn:hover, .btn-primary, .btn:focus{
+    background-color: rgb(55, 16, 100);
+}
+
+.btn:hover{
+    color: aqua;
 }
